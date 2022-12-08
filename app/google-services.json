@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418327320304",
+    "project_id": "whatcar-cd774",
+    "storage_bucket": "whatcar-cd774.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418327320304:android:dc2df986ab2ff5ec631435",
+        "android_client_info": {
+          "package_name": "com.bcxp.whatcar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418327320304-11lep9165m6hvemh5hsek3j6sei09gv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZS_rA73Vrrd9DiegGEsvqyoFFOeZ8Atc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418327320304-11lep9165m6hvemh5hsek3j6sei09gv8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,13 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
+
 
 android {
     namespace 'com.bcxp.whatcar'
     compileSdk 32
+
 
     defaultConfig {
         applicationId "com.bcxp.whatcar"
@@ -14,6 +17,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -22,12 +28,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    aaptOptions {
+        noCompress "tflite"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding true
+        mlModelBinding true
     }
 }
 
@@ -38,7 +50,26 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.5.2'
     implementation 'androidx.navigation:navigation-ui:2.5.2'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT'){ changing = true }
+    // This dependency adds the necessary TF op support.
+    implementation('org.tensorflow:tensorflow-lite-select-tf-ops:0.0.0-nightly-SNAPSHOT'){ changing = true }
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+
+    // Add the dependency for the Firebase ML model downloader library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Also add the dependency for the TensorFlow Lite library and specify its version
+    implementation 'org.tensorflow:tensorflow-lite:2.3.0'
+    implementation 'com.google.firebase:firebase-ml-modeldownloader'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
 }
